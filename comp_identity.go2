@@ -1,0 +1,39 @@
+package main
+
+import (
+	"fmt"
+)
+
+//func Equal[T comparable](x, y T) bool {
+//}
+
+// You can't pass in polymorphic functions as a type, yet
+func idString(s string) string {
+	return s
+}
+
+// Return a function which is equivalent to `g ° f(x)`
+func compose[A, B, C any](f func(A)(B), g func(B)(C)) func(A)(C) {
+	return func(x A) C {
+			return g(f(x))
+		}
+}
+
+// Test composition respecting identity
+func test[A comparable](x A, f func(A)(A)) bool {
+
+	h := compose(f, f)
+	out := h(x)
+
+	return x == out
+}
+
+// Challenge 1.4.3 - composition function must respect identity
+func main() {
+	s := "foo"
+	if test(s, idString) {
+		fmt.Println("composition respects identity")
+	} else {
+		fmt.Println("composition does not respect identity")
+	}
+}
