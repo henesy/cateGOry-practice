@@ -6,6 +6,8 @@ Built with the proposed Go generics as per <https://blog.golang.org/generics-nex
 
 Usage as per <https://go.googlesource.com/go/+/refs/heads/dev.go2go/README.go2go.md> and `go doc cmd/go2go`.
 
+Programs can also be run inside the Go2 playground: <https://go2goplay.golang.org/>
+
 ## Golang
 
 Install the custom Go toolchain:
