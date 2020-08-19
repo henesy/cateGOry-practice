@@ -1,0 +1,15 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func id[type T](x T) T {
+	return x
+}
+
+// Challenge 1.4.1 - identity function
+func main() {
+	fmt.Println(id(6), id("foo"), id(math.Pi))
+}
