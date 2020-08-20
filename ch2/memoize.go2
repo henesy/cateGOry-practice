@@ -1,0 +1,44 @@
+package main
+
+import (
+	"fmt"
+	"math"
+	"time"
+)
+
+const max = math.MaxInt16
+
+func square(x int16) int16 {
+	return x * x
+}
+
+// Return a function which memorizes return values
+func memoize[A comparable](f func(A)(A), m map[A]A) func(A)(A) {
+	return func(x A) A {
+			if v, ok := m[x]; ok {
+				return v
+			}
+
+			v := f(x)
+			m[x] = v
+
+			return v
+		}
+}
+
+// Challenge 2.7.1 - memoize function
+func main() {
+	m := make(map[int16]int16)
+	f := memoize(square, m)
+
+	run := func() {
+			start := time.Now()
+			for i := int16(0); i < max; i++ {
+				f(i)
+			}
+			fmt.Println(time.Now().Sub(start).Milliseconds(), "ms")
+		}
+
+	run()
+	run()
+}
