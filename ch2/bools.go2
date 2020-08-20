@@ -1,0 +1,26 @@
+package main
+
+import (
+	"fmt"
+)
+
+func not(b bool) bool {
+	return !b
+}
+
+func id(b bool) bool {
+	return b
+}
+
+func t(b bool) bool {
+	return true
+}
+
+func f(b bool) bool {
+	return false
+}
+
+// Challenge 2.7.5 - how many bool → bool functions are there?
+func main() {
+	fmt.Println(not(true), id(false), t(false), f(true), not(false))
+}
